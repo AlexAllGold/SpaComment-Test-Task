@@ -2,6 +2,25 @@ import 'dotenv/config';
 
 
 class ConfigService {
+    getDbUser():string | undefined {
+        return this.#getEnv('DATABASE_USERNAME');
+    }
+
+    getDbPass():string | undefined {
+        return this.#getEnv('DATABASE_PASSWORD');
+    }
+
+    getNameDb():string | undefined {
+        return this.#getEnv('DATABASE_DB_NAME');
+    }
+
+    getDbPort():string | undefined {
+        return this.#getEnv('DATABASE_PORT');
+    }
+
+    getHost():string | undefined {
+        return this.#getEnv('HOST');
+    }
 
     getPort(): string | undefined {
         console.log(process.env['PORT'])
