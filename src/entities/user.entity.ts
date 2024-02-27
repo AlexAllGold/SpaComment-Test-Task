@@ -4,15 +4,19 @@ import { CommentEntity } from './comment.entity';
 @Entity({ name: 'user' })
 export class UserEntity {
     @PrimaryGeneratedColumn()
-    id?: number;
+        // @ts-ignore
+    id: number;
 
     @Column('varchar', { length: 255, nullable: false })
-    name?: string;
+        // @ts-ignore
+    name: string;
 
     @Column('varchar', { length: 255, nullable: false })
-    email?: string;
+        // @ts-ignore
+    email: string;
 
 
     @OneToMany(() => CommentEntity, (comment: CommentEntity) => comment.user)
-    comments?: CommentEntity[];
+        // @ts-ignore
+    comments: CommentEntity[];
 }
