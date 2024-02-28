@@ -7,7 +7,7 @@ export class CreateCommentDto {
 
   @IsInt()
   @IsOptional()
-    parentCommentId: number | null;
+  parentCommentId?: number | null;
 
   @IsString()
   @IsNotEmpty()
@@ -20,7 +20,7 @@ export class CreateCommentDto {
 
   constructor(body: CreateCommentDto) {
     this.userId = body?.userId;
-    this.parentCommentId = body?.parentCommentId || null;
+    this.parentCommentId = body?.parentCommentId === undefined ? null : body.parentCommentId;
     this.commentText = body?.commentText;
     this.commentDate = body?.commentDate;
   }

@@ -11,7 +11,7 @@ export class CommentsEntity {
     // @ts-expect-error
     userId: number;
 
-  @Column('int')
+  @Column('int', { nullable: true })
     parentCommentId?: number;
 
   @Column('varchar', { length: 1024, nullable: false })

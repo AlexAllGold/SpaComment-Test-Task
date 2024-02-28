@@ -7,7 +7,7 @@ export class CreateComment1708950258230 implements MigrationInterface {
         (
             id              SERIAL PRIMARY KEY,
             userId          INT           NOT NULL,
-            parentCommentId INT DEFAULT 0,
+            parentCommentId INT DEFAULT NULL,
             commentText     VARCHAR(1024) NOT NULL,
             commentDate     DATE          NOT NULL
         );
@@ -22,8 +22,13 @@ export class CreateComment1708950258230 implements MigrationInterface {
             ALTER TABLE comments
                 ADD CONSTRAINT parent_comment_fk
                     FOREIGN KEY ("parentCommentId")
-                        REFERENCES comments(id);
+                        REFERENCES comments(id)
+                        ON DELETE SET NULL;
     `);
+        await queryRunner.query(`
+            ALTER TABLE comments
+                ALTER COLUMN "parentCommentId" SET DEFAULT NULL;
+        `)
 
     }
 
